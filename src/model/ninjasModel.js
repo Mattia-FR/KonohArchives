@@ -18,4 +18,58 @@ const findOne = async (id) => {
 	}
 };
 
-module.exports = { findAll, findOne };
+const updateOne = async (
+	id,
+	{
+		name,
+		age = null,
+		clan = null,
+		rank = null,
+		description = null,
+		village_id,
+		gender = null,
+	},
+) => {
+	try {
+		const [result] = await db.query(
+			"UPDATE ninjas SET name = ?, age = ?, clan = ?, rank = ?, description = ?, village_id = ?, gender = ? WHERE id = ?",
+			[name, age, clan, rank, description, village_id, gender, id],
+		);
+
+		return result;
+	} catch (err) {
+		console.error(err);
+	}
+};
+
+const insertOne = async ({
+	name,
+	age = null,
+	clan = null,
+	rank = null,
+	description = null,
+	village_id,
+	gender = null,
+}) => {
+	try {
+		const [result] = await db.query(
+			"INSERT INTO ninjas (name, age, clan, rank, description, village_id, gender) VALUES (?, ?, ?, ?, ?, ?, ?)",
+			[name, age, clan, rank, description, village_id, gender],
+		);
+
+		return result;
+	} catch (err) {
+		console.error(err);
+	}
+};
+
+const deleteOne = async (id) => {
+	try {
+		const [result] = await db.query("DELETE FROM ninjas WHERE id = ?", [id]);
+		return result;
+	} catch (err) {
+		console.error(err);
+	}
+};
+
+module.exports = { findAll, findOne, updateOne, insertOne, deleteOne };
