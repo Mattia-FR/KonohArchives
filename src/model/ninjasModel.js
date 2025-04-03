@@ -15,7 +15,7 @@ const findOne = async (id) => {
 			"SELECT n.*, v.name AS village_name FROM ninjas n LEFT JOIN villages v ON n.village_id = v.id WHERE n.id = ?",
 			[id],
 		);
-		return ninja;
+		return ninja[0];
 	} catch (err) {
 		console.error(err);
 	}

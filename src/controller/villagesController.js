@@ -1,4 +1,4 @@
-const { findAll, findOne } = require("../model/ninjasModel");
+const { findAll, findOne } = require("../model/villagesModel");
 
 const browse = async (req, res) => {
 	try {

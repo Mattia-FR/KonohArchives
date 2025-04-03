@@ -18,6 +18,10 @@ const read = async (req, res) => {
 		}
 
 		const ninja = await findOne(ninjaId);
+		if (!ninja) {
+			return res.sendStatus(404);
+		}
+
 		res.status(200).json(ninja);
 	} catch (err) {
 		console.error(err);
