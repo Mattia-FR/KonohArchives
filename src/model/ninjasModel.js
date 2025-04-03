@@ -11,7 +11,10 @@ const findAll = async () => {
 
 const findOne = async (id) => {
 	try {
-		const [ninja] = await db.query("select * from ninjas where id = ?", [id]);
+		const [ninja] = await db.query(
+			"SELECT n.*, v.name AS village_name FROM ninjas n LEFT JOIN villages v ON n.village_id = v.id WHERE n.id = ?",
+			[id],
+		);
 		return ninja;
 	} catch (err) {
 		console.error(err);
