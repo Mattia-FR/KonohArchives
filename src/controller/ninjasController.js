@@ -1,4 +1,10 @@
-const { findAll, findOne, insertOne } = require("../model/ninjasModel");
+const {
+	findAll,
+	findOne,
+	updateOne,
+	insertOne,
+	deleteOne,
+} = require("../model/ninjasModel");
 
 const browse = async (req, res) => {
 	try {

@@ -35,7 +35,7 @@ const updateOne = async (
 ) => {
 	try {
 		const [result] = await db.query(
-			"UPDATE ninjas SET name = ?, age = ?, clan = ?, rank = ?, description = ?, village_id = ?, gender = ? WHERE id = ?",
+			"UPDATE ninjas SET name = ?, age = ?, clan = ?, `rank` = ?, description = ?, village_id = ?, gender = ? WHERE id = ?",
 			[name, age, clan, rank, description, village_id, gender, id],
 		);
 
@@ -56,7 +56,7 @@ const insertOne = async ({
 }) => {
 	try {
 		const [result] = await db.query(
-			"INSERT INTO ninjas (name, age, clan, rank, description, village_id, gender) VALUES (?, ?, ?, ?, ?, ?, ?)",
+			"INSERT INTO ninjas (name, age, clan, `rank`, description, village_id, gender) VALUES (?, ?, ?, ?, ?, ?, ?)",
 			[name, age, clan, rank, description, village_id, gender],
 		);
 
